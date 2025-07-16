@@ -17,15 +17,15 @@ void setup() {
 }
 
 void loop() {
-  float result = dht11.readTemperatureHumidity(temp, humi);   // DHT11 센서 값을 받아와 chk 변수에 저장
-  lcd.setCursor(0,0);                                       // LCD 커서를 0,0으로 초기화
-  lcd.print("Current Temp :");                              // LCD 글자 출력
+  float result = dht11.readTemperatureHumidity(temp, humi);   // DHT11 센서 값을 받아와 온도값을 temp 변수에, 습도값을 humi 변수에 저장
+  lcd.setCursor(0,0);                                         // LCD 커서를 0,0으로 초기화
+  lcd.print("Current Temp :");                                // LCD 글자 출력
   lcd.setCursor(0,1);
   lcd.print(result);
   Serial.println(result);
   //Serial.println((float)DHT11.temperature,2);
 
-  if(result >= 18) {                              // 온도 값에 따라 펠티어 동작
+  if(temp >= 18) {                              // 온도 값에 따라 펠티어 동작
     digitalWrite(3,HIGH);
   }else{
     digitalWrite(3,LOW);
